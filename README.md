@@ -1,35 +1,11 @@
-# Radar de Negócios — Geoapify
+# Bot Zelvon — Geoapify
 
-Versão para Vercel com backend serverless. A chave da Geoapify fica no servidor e não aparece no HTML.
+## Deploy no Vercel
 
-## Configuração
+1. Use esta pasta como a raiz do projeto. Na raiz devem aparecer `index.html`, `package.json`, `vercel.json` e a pasta `api/`.
+2. No Vercel, em Settings > Environment Variables, crie `GEOAPIFY_API_KEY` com sua chave.
+3. Se o projeto tiver uma configuração **Root Directory**, deixe em branco (`./`) ou aponte exatamente para esta pasta.
+4. Faça um novo deploy.
+5. Teste `/api/health`. Deve retornar `configured: true`.
 
-1. Crie um projeto no Geoapify MyProjects e gere uma API key.
-2. No Vercel: **Project > Settings > Environment Variables**.
-3. Crie a variável `GEOAPIFY_API_KEY` e cole a chave como valor.
-4. Marque Production (e Preview/Development, se desejar).
-5. Faça um novo deploy.
-6. Abra `/api/health`: `configured: true` confirma que a variável existe.
-7. Abra a página principal, escolha cidade/segmento e clique em **Buscar negócios**.
-
-## Como funciona
-
-- `api/search.js` usa a Geocoding API para localizar a cidade.
-- Depois usa a Places API para listar estabelecimentos dentro da cidade.
-- Para até 12 resultados, usa Place Details para buscar telefone e website quando disponíveis.
-- O frontend monta a mensagem e abre o WhatsApp com o texto preenchido; o envio permanece manual.
-
-## Estrutura
-
-- `index.html` — painel
-- `api/search.js` — Geoapify Geocoding + Places + Place Details
-- `api/health.js` — verifica se a variável está configurada sem revelar a chave
-- `privacy.html` e `terms.html` — páginas-base; revise antes de uso público
-
-## Uso gratuito e atribuição
-
-No plano gratuito, mantenha visíveis as atribuições Geoapify e OpenStreetMap presentes no rodapé. O painel limita cada busca a até 12 leads para reduzir consumo de créditos e tempo de execução.
-
-## Segurança
-
-Nunca coloque a chave no HTML ou em JavaScript executado no navegador. Se uma chave for exposta publicamente, gere outra no Geoapify e atualize a variável no Vercel.
+A Vercel detecta automaticamente arquivos dentro da pasta `/api` como Functions. Esta versão não usa a propriedade `functions` no `vercel.json`, evitando o erro de padrão não encontrado.

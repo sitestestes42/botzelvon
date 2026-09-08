@@ -1,7 +1,5 @@
 {
-  "functions": {
-    "api/search.js": {
-      "maxDuration": 30
-    }
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "cleanUrls": true
 }
