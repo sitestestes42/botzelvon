@@ -1,11 +1,32 @@
-# Bot Zelvon — Geoapify
+# BotZelvon Geoapify V5
 
-## Deploy no Vercel
+## Integração NATIVA
 
-1. Use esta pasta como a raiz do projeto. Na raiz devem aparecer `index.html`, `package.json`, `vercel.json` e a pasta `api/`.
-2. No Vercel, em Settings > Environment Variables, crie `GEOAPIFY_API_KEY` com sua chave.
-3. Se o projeto tiver uma configuração **Root Directory**, deixe em branco (`./`) ou aponte exatamente para esta pasta.
-4. Faça um novo deploy.
-5. Teste `/api/health`. Deve retornar `configured: true`.
+A categoria **Açaiterias / sorveterias / sobremesas** agora usa o projeto:
 
-A Vercel detecta automaticamente arquivos dentro da pasta `/api` como Functions. Esta versão não usa a propriedade `functions` no `vercel.json`, evitando o erro de padrão não encontrado.
+https://nativa-seven.vercel.app/
+
+O BotZelvon cria automaticamente uma URL personalizada com:
+
+- nome do negócio
+- cidade
+- endereço
+- telefone/WhatsApp quando disponível
+- Instagram quando disponível
+- avaliações ilustrativas ocultas
+
+Exemplo:
+
+`https://nativa-seven.vercel.app/?nome=Nome%20do%20Lead&cidade=Tabo%C3%A3o%20da%20Serra%2C%20SP&whatsapp=5511...&avaliacoes=0`
+
+## Fluxo
+
+1. Buscar negócios
+2. Clicar em **Ver proposta**
+3. Conferir a versão personalizada
+4. Clicar em **Preparar mensagem**
+5. Revisar
+6. Abrir WhatsApp
+7. O envio permanece manual
+
+A variável `GEOAPIFY_API_KEY` continua igual no Vercel.
